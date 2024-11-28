@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import CustomInput from "@/common/CustomInput";
+import CustomInput from "@/components/common/CustomInput";
 
 type FormData = {
     firstName: string;
@@ -62,7 +62,7 @@ const FormPracticeUseForm: React.FC = () => {
                                     <CustomInput
                                         type="text"
                                         placeholder="Enter your first name"
-                                        className="rounded-lg w-full text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"
+                                    
                                         {...field}
                                     />
                                     {errors.firstName && (
@@ -80,7 +80,7 @@ const FormPracticeUseForm: React.FC = () => {
                                     <CustomInput
                                         type="text"
                                         placeholder="Enter your last name"
-                                        className="rounded-lg w-full text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"
+                                    
                                         {...field}
                                     />
                                     {errors.lastName && (
@@ -104,7 +104,7 @@ const FormPracticeUseForm: React.FC = () => {
                                     <CustomInput
                                         type="email"
                                         placeholder="Enter your email"
-                                        className="rounded-lg w-full text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"
+                                    
                                         {...field}
                                     />
                                     {errors.email && (
@@ -128,7 +128,7 @@ const FormPracticeUseForm: React.FC = () => {
                                     <CustomInput
                                         type="password"
                                         placeholder="Enter your password"
-                                        className="rounded-lg w-full text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"
+                                    
                                         {...field}
                                     />
                                     {errors.password && (
@@ -149,7 +149,7 @@ const FormPracticeUseForm: React.FC = () => {
                                     <CustomInput
                                         type="password"
                                         placeholder="Confirm your password"
-                                        className="rounded-lg w-full text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"
+                                    
                                         {...field}
                                     />
                                     {errors.confirmPassword && (
