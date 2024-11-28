@@ -19,7 +19,7 @@ const CustomInput = (props: CustomInputProps) => {
                 name={name}
                 onChange={onChange}
                 placeholder={placeholder}
-                className="rounded-lg w-full mt-4 mb-1 text-gray-600 placeholder:text-gray-600 placeholder:opacity-100 p-2 border outline-none  border-black"   />
+                className="rounded-lg w-full mt-4 mb-1 placeholder:italic placeholder:opacity-70 border-opacity-80 text-gray-600 placeholder:text-gray-600 p-2 border outline-none border-black"   />
         </div>
 
     )
