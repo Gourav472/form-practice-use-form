@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import CustomInput from "@/common/CustomInput";
 
@@ -12,13 +12,15 @@ type FormData = {
 };
 
 const FormPracticeUseForm: React.FC = () => {
+    const [submittedData, setSubmittedData] = useState<FormData | null>(null);
     const {
         control,
         handleSubmit,
         formState: { errors },
         watch,
         clearErrors,
-        reset, // Add reset to your hook
+        reset,
+
     } = useForm<FormData>({
         defaultValues: {
             firstName: "",
@@ -31,10 +33,8 @@ const FormPracticeUseForm: React.FC = () => {
 
     const onSubmit: SubmitHandler<FormData> = (data) => {
         console.log("Form submitted successfully:", data);
-
-        // Reset the form after submission
-        reset(); // This will clear the form
-
+        setSubmittedData(data);
+        reset();
         clearErrors();
     };
 
@@ -50,12 +50,9 @@ const FormPracticeUseForm: React.FC = () => {
         <div className="flex py-20 justify-center items-center">
             <div className="container px-4">
                 <div className="max-w-[600px] mx-auto w-full">
-                    <form
-                        onSubmit={handleSubmit(onSubmit)}
-                        className="flex flex-col gap-4 shadow-lg p-10 rounded-lg"
-                    >
+                    <form onSubmit={handleSubmit(onSubmit)}
+                        className="flex flex-col gap-4 shadow-lg p-10 rounded-lg">
                         <span className="font-semibold text-center text-xl text-gray-600">FORM</span>
-
                         <Controller
                             name="firstName"
                             control={control}
@@ -169,6 +166,42 @@ const FormPracticeUseForm: React.FC = () => {
                             Confirm
                         </button>
                     </form>
+
+                    {submittedData && (
+                        <div className="mt-10">
+                            <h2 className="text-xl font-semibold text-gray-700">Submitted Data:</h2>
+                            <table className="min-w-full mt-4 border-collapse">
+                                <thead>
+                                    <tr className="border-b">
+                                        <th className="px-4 py-2 text-left text-gray-600">Field</th>
+                                        <th className="px-4 py-2 text-left text-gray-600">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="border-b">
+                                        <td className="px-4 py-2 text-gray-600">First Name</td>
+                                        <td className="px-4 py-2 text-gray-600">{submittedData.firstName}</td>
+                                    </tr>
+                                    <tr className="border-b">
+                                        <td className="px-4 py-2 text-gray-600">Last Name</td>
+                                        <td className="px-4 py-2 text-gray-600">{submittedData.lastName}</td>
+                                    </tr>
+                                    <tr className="border-b">
+                                        <td className="px-4 py-2 text-gray-600">Email</td>
+                                        <td className="px-4 py-2 text-gray-600">{submittedData.email}</td>
+                                    </tr>
+                                    <tr className="border-b">
+                                        <td className="px-4 py-2 text-gray-600">Password</td>
+                                        <td className="px-4 py-2 text-gray-600">{submittedData.password}</td>
+                                    </tr>
+                                    <tr className="border-b">
+                                        <td className="px-4 py-2 text-gray-600">Confirmed Password</td>
+                                        <td className="px-4 py-2 text-gray-600">{submittedData.confirmPassword}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
