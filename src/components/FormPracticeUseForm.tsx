@@ -71,7 +71,7 @@ const FormPracticeUseForm: React.FC = () => {
         <div className="max-w-[600px] mx-auto w-full">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 shadow-lg p-10 rounded-lg"
+            className="flex flex-col shadow-lg p-10 rounded-lg"
           >
             <span className="font-semibold text-center text-xl text-gray-600">FORM</span>
             <Controller
